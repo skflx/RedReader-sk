@@ -19,17 +19,17 @@
 
 <LinearLayout
 		xmlns:android="http://schemas.android.com/apk/res/android"
-		xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		xmlns:app="http://schemas.android.com/apk/res-auto"
 		android:orientation="vertical"
+		android:paddingLeft="10dp"
+		android:paddingRight="10dp"
+		android:paddingTop="4dp"
+		android:paddingBottom="4dp"
+		android:clipToPadding="false"
 		android:baselineAligned="false">
-
-	<View
-			android:id="@+id/view_reddit_post_divider_top"
-			android:layout_width="match_parent"
-			android:layout_height="1px"
-			android:background="?rrListDividerCol"/>
 
 	<LinearLayout
 			android:id="@+id/reddit_post_layout_outer"
@@ -37,7 +37,7 @@
 			android:layout_height="wrap_content"
 			android:gravity="center_vertical"
 			android:orientation="vertical"
-			android:elevation="10dp"
+			android:clipToOutline="true"
 			android:nextFocusRight="@id/reddit_post_comments_button"
 			android:baselineAligned="false"
 			tools:ignore="UnusedAttribute">
@@ -50,21 +50,27 @@
 				android:gravity="center_vertical"
 				android:layoutDirection="ltr"
 				android:orientation="horizontal"
-				android:minHeight="64dp"
+				android:minHeight="68dp"
 				android:nextFocusRight="@id/reddit_post_comments_button"
 				android:baselineAligned="false">
 
 			<FrameLayout
 					android:layout_width="wrap_content"
 					android:layout_height="match_parent"
+					android:layout_marginStart="10dp"
+					android:layout_marginLeft="10dp"
+					android:layout_marginTop="10dp"
+					android:layout_marginBottom="10dp"
 					android:baselineAligned="false"
-					android:background="?rrPostThumbnailBackground">
+					android:clipToOutline="true"
+					android:background="@drawable/rr_thumbnail_rounded_bg"
+					tools:ignore="UnusedAttribute">
 
 				<ImageView
 						android:id="@+id/reddit_post_thumbnail_view"
 						android:layout_width="wrap_content"
 						android:layout_height="match_parent"
-						android:scaleType="center"
+						android:scaleType="centerCrop"
 						tools:ignore="ContentDescription"/>
 
 				<ImageView
@@ -73,7 +79,7 @@
 						android:layout_height="match_parent"
 						android:scaleType="center"
 						android:visibility="gone"
-						android:background="#99000000"
+						android:background="#88000000"
 						tools:ignore="ContentDescription"/>
 
 			</FrameLayout>
@@ -93,53 +99,63 @@
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:textColor="?rrPostTitleCol"
-						android:paddingLeft="10dp"
+						android:fontFamily="sans-serif-medium"
+						android:lineSpacingMultiplier="1.15"
+						android:paddingLeft="12dp"
 						android:paddingRight="10dp"
-						android:paddingTop="5dp"
-						android:paddingBottom="0dp"
-						android:textSize="14sp"/>
+						android:paddingTop="12dp"
+						android:paddingBottom="4dp"
+						android:textSize="15sp"/>
 
 				<com.google.android.material.textview.MaterialTextView
 						android:id="@+id/reddit_post_subtitle"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:gravity="center_vertical"
-						android:textColor="#909090"
-						android:paddingLeft="10dp"
+						android:textColor="?rrPostSubtitleCol"
+						android:lineSpacingMultiplier="1.15"
+						android:paddingLeft="12dp"
 						android:paddingRight="10dp"
-						android:paddingTop="1dp"
-						android:paddingBottom="5dp"
-						android:textSize="11sp"
-						tools:ignore="SmallSp"/>
+						android:paddingTop="0dp"
+						android:paddingBottom="12dp"
+						android:textSize="12sp"/>
 
 			</LinearLayout>
 
 			<LinearLayout
 					android:id="@+id/reddit_post_comments_button"
-					android:layout_width="50dp"
-					android:layout_height="match_parent"
+					android:layout_width="wrap_content"
+					android:minWidth="48dp"
+					android:layout_height="wrap_content"
+					android:minHeight="48dp"
+					android:layout_marginEnd="10dp"
+					android:layout_marginRight="10dp"
+					android:layout_marginTop="8dp"
+					android:layout_marginBottom="8dp"
+					android:paddingLeft="10dp"
+					android:paddingRight="10dp"
+					android:paddingTop="8dp"
+					android:paddingBottom="8dp"
 					android:gravity="center"
 					android:background="?rrPostCommentsButtonBackCol"
 					android:orientation="vertical"
 					android:nextFocusLeft="@id/reddit_post_layout_outer">
 
 				<ImageView
-						android:layout_height="wrap_content"
-						android:layout_width="match_parent"
+						android:layout_height="18dp"
+						android:layout_width="18dp"
 						android:src="?rrIconComments"
 						android:scaleType="fitCenter"
-						android:layout_marginLeft="8dp"
-						android:layout_marginRight="8dp"
-						android:layout_marginTop="4dp"
-						android:layout_marginBottom="2dp"
+						android:layout_marginBottom="3dp"
 						android:contentDescription="@string/action_comments"/>
 
 				<com.google.android.material.textview.MaterialTextView
 						android:id="@+id/reddit_post_comments_text"
 						android:layout_height="wrap_content"
-						android:layout_width="fill_parent"
+						android:layout_width="wrap_content"
 						android:gravity="center"
 						android:textSize="11sp"
+						android:fontFamily="sans-serif-medium"
 						android:textColor="?rrPostCommentsButtonTextCol"
 						tools:ignore="SmallSp"/>
 

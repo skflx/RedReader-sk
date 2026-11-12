@@ -17,6 +17,8 @@
   ~ along with RedReader.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<color
-		xmlns:android="http://schemas.android.com/apk/res/android"
-		android:color="?attr/rrPostCommentsButtonHighlightCol" />
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+		android:shape="rectangle">
+	<solid android:color="?attr/rrPostCommentsButtonHighlightCol" />
+	<corners android:radius="10dp" />
+</shape>

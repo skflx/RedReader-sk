@@ -33,15 +33,22 @@ import org.quantumbadger.redreader.common.PrefsUtility;
  */
 class IndentView extends View {
 
-	private final Paint mPaint = new Paint();
+	private static final int[] DEPTH_COLORS = new int[] {
+			0x88FF8566,
+			0x88E5B567,
+			0x887EC699,
+			0x887AA2F7,
+			0x88B48EAD
+	};
+
+	private final Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 	private int mIndent;
 
 	private final int mPixelsPerIndent;
 	private final int mHalfALine;
+	private final int mDefaultLineColor;
 
 	private final boolean mPrefDrawLines;
-
-	private float[] mLineBuffer;
 
 	public IndentView(final Context context) {
 		this(context, null);
@@ -59,8 +66,8 @@ class IndentView extends View {
 		super(context, attrs, defStyleAttr);
 
 		mPixelsPerIndent = General.dpToPixels(context, 10.0f);
-		final int mPixelsPerLine = General.dpToPixels(context, 2);
-		mHalfALine = mPixelsPerLine / 2;
+		final float pixelsPerLine = Math.max(1.5f, context.getResources().getDisplayMetrics().density * 1.5f);
+		mHalfALine = Math.round(pixelsPerLine / 2.0f);
 
 		final int rrIndentBackgroundCol;
 		final int rrIndentLineCol;
@@ -77,9 +84,11 @@ class IndentView extends View {
 			attr.recycle();
 		}
 
+		mDefaultLineColor = rrIndentLineCol;
 		this.setBackgroundColor(rrIndentBackgroundCol);
 		mPaint.setColor(rrIndentLineCol);
-		mPaint.setStrokeWidth(mPixelsPerLine);
+		mPaint.setStrokeWidth(pixelsPerLine);
+		mPaint.setStrokeCap(Paint.Cap.ROUND);
 
 		mPrefDrawLines = PrefsUtility.pref_appearance_indentlines();
 	}
@@ -92,20 +101,15 @@ class IndentView extends View {
 		final int height = getMeasuredHeight();
 
 		if(mPrefDrawLines) {
-			// i keeps track of indentation, and
-			// l is to populate the float[] with line co-ordinates
-			int l = 0;
 			int i = 0;
 			while(i < mIndent) {
+				mPaint.setColor(DEPTH_COLORS[i % DEPTH_COLORS.length]);
 				final float x = (mPixelsPerIndent * ++i) - mHalfALine;
-				mLineBuffer[l++] = x;      // start-x
-				mLineBuffer[l++] = 0;      // start-y
-				mLineBuffer[l++] = x;      // stop-x
-				mLineBuffer[l++] = height; // stop-y
+				canvas.drawLine(x, 0, x, height, mPaint);
 			}
-			canvas.drawLines(mLineBuffer, mPaint);
 
 		} else {
+			mPaint.setColor(mDefaultLineColor);
 			final float rightLine = getWidth() - mHalfALine;
 			canvas.drawLine(rightLine, 0, rightLine, getHeight(), mPaint);
 		}
@@ -119,10 +123,6 @@ class IndentView extends View {
 	public void setIndentation(final int indent) {
 		getLayoutParams().width = (mPixelsPerIndent * indent);
 		mIndent = indent;
-
-		if(mPrefDrawLines) {
-			mLineBuffer = new float[mIndent * 4];
-		}
 
 		invalidate();
 		requestLayout();
