@@ -31,7 +31,9 @@
     </style>
 
 	<style name="RR.Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
-		<item name="android:textSize">18sp</item>
+		<item name="android:textSize">19sp</item>
+		<item name="android:fontFamily">sans-serif-medium</item>
+		<item name="android:letterSpacing">-0.01</item>
 	</style>
 
 	<style name="RR.Dark.Dialog.Alert" parent="Theme.Material3.Dark.Dialog.Alert">

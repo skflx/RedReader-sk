@@ -65,19 +65,19 @@ enum class AppearanceTheme(
 	NIGHT(
 		stringValue = "night",
 		lightness = ThemeLightness.Dark,
-		colorPrimary = Color(0xCC, 0xCC, 0xCC),
-		colorPrimaryDark = Color.Black
+		colorPrimary = Color(0xFF, 0x85, 0x66),
+		colorPrimaryDark = Color(0x0F, 0x11, 0x15)
 	),
 	NIGHT_LOWCONTRAST(
 		stringValue = "night_lowcontrast",
 		lightness = ThemeLightness.Dark,
-		colorPrimary = Color(0xCC, 0xCC, 0xCC),
-		colorPrimaryDark = Color.Black
+		colorPrimary = Color(0xFF, 0x85, 0x66),
+		colorPrimaryDark = Color(0x0F, 0x11, 0x15)
 	),
 	ULTRABLACK(
 		stringValue = "ultrablack",
 		lightness = ThemeLightness.Dark,
-		colorPrimary = Color(0xCC, 0xCC, 0xCC),
+		colorPrimary = Color(0xFF, 0x85, 0x66),
 		colorPrimaryDark = Color.Black
 	);
 

@@ -169,57 +169,65 @@ class ComposeThemeImpl(prefs: ComposePrefs) : ComposeTheme {
 	val baseTextStyle = TextStyle()
 
 	val colorText = if (light) {
-		Colors.Grey.s10
+		Color(0xFF11161F)
 	} else if (theme == AppearanceTheme.NIGHT_LOWCONTRAST) {
-		Colors.Grey.s2
+		Color(0xFFA2AAB8)
 	} else {
-		Colors.Grey.s1
+		Color(0xFFF1F3F6)
 	}
 
 	val colorSubtext = if (light) {
-		Colors.Grey.s6
+		Color(0xFF5A6475)
 	} else if (theme == AppearanceTheme.NIGHT_LOWCONTRAST) {
-		Colors.Grey.s5
+		Color(0xFF737B8A)
 	} else {
-		Colors.Grey.s3
+		Color(0xFF9AA3B2)
 	}
 
 	val colorIcon = if (light) {
-		Colors.Grey.s7
+		Color(0xFF3D4654)
 	} else if (theme == AppearanceTheme.NIGHT_LOWCONTRAST) {
-		Colors.Grey.s6
+		Color(0xFF8B93A2)
 	} else {
-		Colors.Grey.s4
+		Color(0xFFC8D0DC)
 	}
 
 	val colorCardBackground = if (light) {
 		Color.White
 	} else if (theme == AppearanceTheme.ULTRABLACK) {
 		Color.Black
+	} else if (theme == AppearanceTheme.NIGHT_LOWCONTRAST) {
+		Color(0xFF191C23)
 	} else {
-		Colors.Grey.s9
+		Color(0xFF171A21)
 	}
 
 	val colorListBackground = if (light) {
-		Colors.Grey.s1
-	} else if (theme == AppearanceTheme.NIGHT_LOWCONTRAST) {
-		Colors.Grey.s10
-	} else {
+		Color(0xFFF4F6F9)
+	} else if (theme == AppearanceTheme.ULTRABLACK) {
 		Color.Black
+	} else if (theme == AppearanceTheme.NIGHT_LOWCONTRAST) {
+		Color(0xFF13161C)
+	} else {
+		Color(0xFF0F1115)
 	}
 
 	val colorPopupBackground = if (light) {
 		Color.White
+	} else if (theme == AppearanceTheme.ULTRABLACK) {
+		Color(0xFF12151B)
 	} else if (theme == AppearanceTheme.NIGHT_LOWCONTRAST) {
-		Colors.Grey.s7
+		Color(0xFF222733)
 	} else {
-		Colors.Grey.s8
+		Color(0xFF20242E)
 	}
 
 	val colorImageBackground = if (light) {
-		Colors.Grey.s2
+		Color(0xFFEEF1F6)
+	} else if (theme == AppearanceTheme.ULTRABLACK) {
+		Color(0xFF0D0F14)
 	} else {
-		Colors.Grey.s8
+		Color(0xFF20242E)
 	}
 
 	override val postCard = object : ComposeThemePostCard {

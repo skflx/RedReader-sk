@@ -18,13 +18,11 @@
 package org.quantumbadger.redreader.views;
 
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import org.quantumbadger.redreader.R;
-import org.quantumbadger.redreader.common.Fonts;
 import org.quantumbadger.redreader.common.General;
 import org.quantumbadger.redreader.common.Optional;
 import org.quantumbadger.redreader.common.PrefsUtility;
@@ -62,22 +60,23 @@ public final class PostListingHeader extends LinearLayout {
 				appearance.recycle();
 			}
 
-			final int sidesPadding = (int)(15.0f * dpScale);
-			final int topPadding = (int)(10.0f * dpScale);
+			final int sidesPadding = (int)(16.0f * dpScale);
+			final int topPadding = (int)(12.0f * dpScale);
 
 			greyHeader.setPadding(sidesPadding, topPadding, sidesPadding, topPadding);
 
 			final TextView title = new TextView(activity);
 			title.setText(titleText);
-			title.setTextSize(22.0f);
-			title.setTypeface(Fonts.getRobotoLightOrAlternative());
-			title.setTextColor(Color.WHITE);
+			title.setTextSize(20.0f);
+			title.setTypeface(android.graphics.Typeface.create("sans-serif-medium", android.graphics.Typeface.NORMAL));
+			title.setTextColor(0xFFF1F3F6);
 			greyHeader.addView(title);
 
 			final TextView subtitle = new TextView(activity);
-			subtitle.setTextSize(14.0f);
+			subtitle.setTextSize(13.0f);
 			subtitle.setText(subtitleText);
-			subtitle.setTextColor(Color.rgb(200, 200, 200));
+			subtitle.setTextColor(0xFFB5BDCC);
+			subtitle.setPadding(0, (int)(2.0f * dpScale), 0, 0);
 			greyHeader.addView(subtitle);
 
 			addView(greyHeader);
